@@ -2,9 +2,10 @@ import axios from "axios";
 
 const { NODE_ENV } = process.env;
 
-const baseURL = NODE_ENV === "development" ? "http://localhost:8000/api/" : "https://ncovenience-api.herokuapp.com/";
+const baseURL =
+  NODE_ENV === "development" ? "http://localhost:8000/api/" : "https://ncovenience-api.herokuapp.com/api/";
 
-const axiosInstance = axios.create({ baseURL, timeout: 30000 });
+const axiosInstance = axios.create({ baseURL });
 
 const api = {
   data: {
