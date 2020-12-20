@@ -2,35 +2,37 @@ import axios from "axios";
 
 const { NODE_ENV } = process.env;
 
-const baseURL = NODE_ENV === "development" ? "http://localhost:8000/api/" : "https://ncovenience.herokuapp.com/";
+const baseURL = NODE_ENV === "development" ? "http://localhost:8000/api/" : "https://ncovenience-api.herokuapp.com/";
 
-const api = axios.create({ baseURL, timeout: 30000 });
+const axiosInstance = axios.create({ baseURL, timeout: 30000 });
 
-export default {
+const api = {
   data: {
     cases() {
-      return api.get("cases");
+      return axiosInstance.get("cases");
     },
     numbers() {
-      return api.get("numbers");
+      return axiosInstance.get("numbers");
     },
     counts() {
-      return api.get("counts");
+      return axiosInstance.get("counts");
     },
     timePlot() {
-      return api.get("time-plot");
+      return axiosInstance.get("time-plot");
     },
     worldPlot() {
-      return api.get("world-plot");
+      return axiosInstance.get("world-plot");
     },
     deltaPlot() {
-      return api.get("delta-plot");
+      return axiosInstance.get("delta-plot");
     },
     agePlot() {
-      return api.get("age-plot");
+      return axiosInstance.get("age-plot");
     },
     metroPlot() {
-      return api.get("metro-plot");
+      return axiosInstance.get("metro-plot");
     },
   },
 };
+
+export default api;
